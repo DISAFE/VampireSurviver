@@ -25,17 +25,15 @@ public class RePosition : MonoBehaviour
         float disX = tileMap.position.x - player.position.x;
         float disY = tileMap.position.y - player.position.y;
 
-        if (Mathf.Abs(disX) >= GameManager.Instance.tileMapSizeX) //ÁÂ ¿ì
+        if (Mathf.Abs(disX) >= GameManager.Instance.normalSize.x) //ÁÂ ¿ì
         {
             int horizontal = disX > 0 ? -2 : +2;
-            tileMap.position += Vector3.right * horizontal * GameManager.Instance.tileMapSizeX;
-            Debug.Log(GameManager.Instance.tileMapSizeX);
+            tileMap.position += Vector3.right * horizontal * GameManager.Instance.normalSize.x;
         }
-        if (Mathf.Abs(disY) >= GameManager.Instance.tileMapSizeY) // À§ ¾Æ·¡
+        if (Mathf.Abs(disY) >= GameManager.Instance.normalSize.y) // À§ ¾Æ·¡
         {
             int vertical = disY > 0 ? -2 : +2;
-            tileMap.position += Vector3.up * vertical * GameManager.Instance.tileMapSizeY;
-            Debug.Log(GameManager.Instance.tileMapSizeY);
+            tileMap.position += Vector3.up * vertical * GameManager.Instance.normalSize.y;
         }
     }
 
@@ -46,15 +44,15 @@ public class RePosition : MonoBehaviour
         float disX = monster.position.x - player.position.x;
         float disY = monster.position.y - player.position.y;
 
-        if (Mathf.Abs(disX) >= GameManager.Instance.tileMapSizeX / 2) //ÁÂ ¿ì
+        if (Mathf.Abs(disX) >= GameManager.Instance.normalSize.x / 2) //ÁÂ ¿ì
         {
             int horizontal = disX > 0 ? -1 : +1;
-            monster.position += Vector3.right * horizontal * GameManager.Instance.tileMapSizeX;
+            monster.position += Vector3.right * horizontal * GameManager.Instance.normalSize.x;
         }
-        if (Mathf.Abs(disY) >= GameManager.Instance.tileMapSizeY / 2) // À§ ¾Æ·¡
+        if (Mathf.Abs(disY) >= GameManager.Instance.normalSize.y / 2) // À§ ¾Æ·¡
         {
             int vertical = disY > 0 ? -1 : +1;
-            monster.position += Vector3.up * vertical * GameManager.Instance.tileMapSizeY;
+            monster.position += Vector3.up * vertical * GameManager.Instance.normalSize.y;
         }
     }
 }
