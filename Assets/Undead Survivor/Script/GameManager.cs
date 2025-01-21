@@ -14,10 +14,10 @@ public class GameManager : MonoBehaviour
     public Vector2 normalSize = new (50, 40);
 
     // 플레이어가 죽었는 지 확인하는 변수
-    public bool playerIsDead;
+    public bool playerIsDead = false;
 
     // 플레이어의 현재 레벨을 나타내는 변수
-    public int gameLevel = 1;
+    public int gameLevel = 2;
 
     void Awake()
     {
