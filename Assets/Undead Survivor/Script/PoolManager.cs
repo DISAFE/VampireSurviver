@@ -19,68 +19,63 @@ public class PoolManager : MonoBehaviour
     public GameObject[] prefabs;
     public GameObject[] pools;
 
-    async void Start()
+    void Start()
     {
-        Debug.Log("PoolManager Start");
         StartCoroutine("SpawnMonster1");
         StartCoroutine("SpawnMonster2");
         StartCoroutine("SpawnMonster3");
         StartCoroutine("SpawnMonster4");
     }
 
-    void FixedUpdate()
+    IEnumerator SpawnMonster1()
     {
-        if(GameManager.Instance.playerIsDead)
+        while (!GameManager.Instance.playerIsDead)
         {
-            StopCoroutine("SpawnMonster1");
-            StopCoroutine("SpawnMonster2");
-            StopCoroutine("SpawnMonster3");
-            StopCoroutine("SpawnMonster4");
+            yield return new WaitForSecondsRealtime(1);
+            if (GameManager.Instance.gameLevel >= 1)
+            {
+                int poolIndex = Random.Range(0, pools.Length);
+                Instantiate(prefabs[0], pools[poolIndex].transform.position, Quaternion.identity);
+            }
         }
     }
 
+    IEnumerator SpawnMonster2()
     {
-        Debug.Log("SpawnMonster1 Start");
-
-        yield return new WaitForSecondsRealtime(1);
-        if (GameManager.Instance.gameLevel >= 1)
+        while (!GameManager.Instance.playerIsDead)
         {
-            Debug.Log("Spawn Monster1");
-            int poolIndex = Random.Range(0, pools.Length);
-            Instantiate(prefabs[0], pools[poolIndex].transform.position, Quaternion.identity);
+            yield return new WaitForSecondsRealtime(2);
+            if (GameManager.Instance.gameLevel >= 2)
+            {
+                int poolIndex = Random.Range(0, pools.Length);
+                Instantiate(prefabs[1], pools[poolIndex].transform.position, Quaternion.identity);
+            }
         }
-    
     }
 
+    IEnumerator SpawnMonster3()
     {
-        Debug.Log("SpawnMonster2 Start");
-
-        yield return new WaitForSecondsRealtime(2);
-        if (GameManager.Instance.gameLevel >= 2)
+        while (!GameManager.Instance.playerIsDead)
         {
-            Debug.Log("Spawn Monster2");
-            int poolIndex = Random.Range(0, pools.Length);
-            Instantiate(prefabs[0], pools[poolIndex].transform.position, Quaternion.identity);
+            yield return new WaitForSecondsRealtime(5);
+            if (GameManager.Instance.gameLevel >= 3)
+            {
+                int poolIndex = Random.Range(0, pools.Length);
+                // Instantiate(prefabs[2], pools[poolIndex].transform.position, Quaternion.identity);
+            }
         }
-
     }
 
+    IEnumerator SpawnMonster4()
     {
-        yield return new WaitForSecondsRealtime(5);
-        if (GameManager.Instance.gameLevel >= 3)
+        while (!GameManager.Instance.playerIsDead)
         {
-            int poolIndex = Random.Range(0, pools.Length);
-            // Instantiate(prefabs[1], pools[poolIndex].transform.position, Quaternion.identity);
-        }
-
-    }
-
-    {
-        yield return new WaitForSecondsRealtime(5);
-        if (GameManager.Instance.gameLevel >= 4)
-        {
-            int poolIndex = Random.Range(0, pools.Length);
-            // Instantiate(prefabs[1], pools[poolIndex].transform.position, Quaternion.identity);
+            yield return new WaitForSecondsRealtime(5);
+            if (GameManager.Instance.gameLevel >= 4)
+            {
+                int poolIndex = Random.Range(0, pools.Length);
+                // Instantiate(prefabs[3], pools[poolIndex].transform.position, Quaternion.identity);
+            }
         }
     }
     
