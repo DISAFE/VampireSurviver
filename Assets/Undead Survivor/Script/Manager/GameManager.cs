@@ -14,13 +14,10 @@ public class GameManager : MonoBehaviour
     public bool playerIsDead = false;
     // 플레이어의 현재 레벨을 나타내는 int
     public int gameLevel = 2;
-    // 게임에 존재하는 무기들의 리스트
-    public List<string> Weapons = new List<string> { "Shovles" }; // 나중에 파일 입출력으로 바꾸기
 
     void Awake()
     {
         Instance = this;
         player = GameObject.Find("Player");
     }
-
 }

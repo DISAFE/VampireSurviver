@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6379812945938897325}
+  - component: {fileID: 4362686970842287955}
   m_Layer: 0
   m_Name: Shovels
   m_TagString: Untagged
@@ -31,3 +32,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4362686970842287955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7350163100590508963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b907fa433fbe9af4a917265fafdd2554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shovel: {fileID: 2500508931682303532, guid: 70df68c98473734489532dba16e51e67, type: 3}
