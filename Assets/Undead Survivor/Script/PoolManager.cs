@@ -39,7 +39,6 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    IEnumerable SpawnMonster1()
     {
         Debug.Log("SpawnMonster1 Start");
 
@@ -53,7 +52,6 @@ public class PoolManager : MonoBehaviour
     
     }
 
-    IEnumerable SpawnMonster2()
     {
         Debug.Log("SpawnMonster2 Start");
 
@@ -67,7 +65,6 @@ public class PoolManager : MonoBehaviour
 
     }
 
-    IEnumerable SpawnMonster3()
     {
         yield return new WaitForSecondsRealtime(5);
         if (GameManager.Instance.gameLevel >= 3)
@@ -78,7 +75,6 @@ public class PoolManager : MonoBehaviour
 
     }
 
-    IEnumerable SpawnMonster4()
     {
         yield return new WaitForSecondsRealtime(5);
         if (GameManager.Instance.gameLevel >= 4)
