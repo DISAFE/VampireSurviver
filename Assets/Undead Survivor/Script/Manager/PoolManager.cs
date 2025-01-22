@@ -15,10 +15,10 @@ public class PoolManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine("SpawnMonster1");
-        StartCoroutine("SpawnMonster2");
-        StartCoroutine("SpawnMonster3");
-        StartCoroutine("SpawnMonster4");
+        StartCoroutine(nameof(SpawnMonster1));
+        StartCoroutine(nameof(SpawnMonster2));
+        StartCoroutine(nameof(SpawnMonster3));
+        StartCoroutine(nameof(SpawnMonster4));
     }
 
     IEnumerator SpawnMonster1()
@@ -26,7 +26,7 @@ public class PoolManager : MonoBehaviour
         while (!PlayerManager.Instance.playerIsDead)
         {
             yield return new WaitForSecondsRealtime(1);
-            if (GamedataManager.Instance.gameLevel >= 1)
+            if (StateManager.Instance.gameLevel >= 1)
             {
                 int poolIndex = Random.Range(0, pools.Length);
                 Instantiate(prefabs[0], pools[poolIndex].transform.position, Quaternion.identity);
@@ -39,7 +39,7 @@ public class PoolManager : MonoBehaviour
         while (!PlayerManager.Instance.playerIsDead)
         {
             yield return new WaitForSecondsRealtime(2);
-            if (GamedataManager.Instance.gameLevel >= 2)
+            if (StateManager.Instance.gameLevel >= 2)
             {
                 int poolIndex = Random.Range(0, pools.Length);
                 Instantiate(prefabs[1], pools[poolIndex].transform.position, Quaternion.identity);
@@ -52,7 +52,7 @@ public class PoolManager : MonoBehaviour
         while (!PlayerManager.Instance.playerIsDead)
         {
             yield return new WaitForSecondsRealtime(5);
-            if (GamedataManager.Instance.gameLevel >= 3)
+            if (StateManager.Instance.gameLevel >= 3)
             {
                 int poolIndex = Random.Range(0, pools.Length);
                 // Instantiate(prefabs[2], pools[poolIndex].transform.position, Quaternion.identity);
@@ -65,7 +65,7 @@ public class PoolManager : MonoBehaviour
         while (!PlayerManager.Instance.playerIsDead)
         {
             yield return new WaitForSecondsRealtime(5);
-            if (GamedataManager.Instance.gameLevel >= 4)
+            if (StateManager.Instance.gameLevel >= 4)
             {
                 int poolIndex = Random.Range(0, pools.Length);
                 // Instantiate(prefabs[3], pools[poolIndex].transform.position, Quaternion.identity);
