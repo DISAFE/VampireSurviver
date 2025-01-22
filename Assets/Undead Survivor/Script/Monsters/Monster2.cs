@@ -37,7 +37,7 @@ public class Monster2 : MonoBehaviour
 
     void Walk()
     {
-        Vector3 playerPos = GameManager.Instance.player.transform.position;
+        Vector3 playerPos = PlayerManager.Instance.player.transform.position;
         monsterInput.x = playerPos.x - transform.position.x;
         monsterInput.y = playerPos.y - transform.position.y;
         monsterInput = monsterInput.normalized * normalSpeed * Time.fixedDeltaTime;
