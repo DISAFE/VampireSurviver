@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance;
     public Dictionary<string, int> weaponLevel = new ()
         {
-            {"Shovels", 7},
+            {"Shovels", 6},
             {"Hoes", 0},
             {"Rakes", 0},
             {"Rifle", 0},

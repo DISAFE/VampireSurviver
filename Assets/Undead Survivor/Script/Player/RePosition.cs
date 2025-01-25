@@ -26,7 +26,7 @@ public class RePosition : MonoBehaviour
         float disY = tileMap.position.y - player.position.y;
 
         if (Mathf.Abs(disX) >= GamedataManager.Instance.normalSize.x) //аб ©Л
-        {
+        {   
             int horizontal = disX > 0 ? -2 : +2;
             tileMap.position += Vector3.right * horizontal * GamedataManager.Instance.normalSize.x;
         }

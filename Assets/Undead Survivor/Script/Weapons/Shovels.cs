@@ -8,12 +8,14 @@ public class Shovels : MonoBehaviour
 {
     [SerializeField]
     private GameObject myPrefab;
-    private string myName = "Shovels";
+    private GameObject[] prefabList;
+    private float[] prefabAngleList;
+    private string myName;
     private int myLevel;
-   
-
+    
     private void Awake()
     {
+        myName = "Shovels";
     }
     private void Start()
     {
@@ -24,29 +26,36 @@ public class Shovels : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position = PlayerManager.Instance.player.transform.position;
-        //Paint();
+        Paint();
     }
 
-    private void LevelUp()
+    private void LevelUp() // 레벨업 리스너 함수
     {
         if (PlayerManager.Instance.GetLevel(myName) != myLevel) Batch();
     }
 
     private void Paint()
     {
-
+        for (int i = 0; i < myLevel; i++)
+        {
+            prefabAngleList[i] += 2f;
+            prefabList[i].transform.localPosition = (new Vector3(-Mathf.Sin(prefabAngleList[i] * Mathf.Deg2Rad), Mathf.Cos(prefabAngleList[i] * Mathf.Deg2Rad), 0)) * 1.5f;
+            prefabList[i].transform.rotation = Quaternion.Euler(0, 0, prefabAngleList[i]);
+        }
     }
     private void Batch()
     {
         if (myLevel == 0) return;
-
+        prefabList = new GameObject[myLevel];
+        prefabAngleList = new float[myLevel];
         for (int i = 0; i < myLevel; i++)
         {
-            GameObject newPrefab = Instantiate(myPrefab);
-            newPrefab.transform.SetParent(transform, false);
-            newPrefab.transform.rotation = Quaternion.Euler(0, 0, 360 * i / myLevel);
-            newPrefab.transform.localPosition += new Vector3(0, 1.5f, 0);
+            Debug.Log("batch");
+            prefabAngleList[i] = 360 * i / myLevel;
+            prefabList[i] = Instantiate(myPrefab);
+            prefabList[i].transform.SetParent(transform, false);
+            prefabList[i].transform.rotation = Quaternion.Euler(0, 0, prefabAngleList[i]);
+            prefabList[i].transform.localPosition += (new Vector3(-Mathf.Sin(prefabAngleList[i] * Mathf.Deg2Rad), Mathf.Cos(prefabAngleList[i] * Mathf.Deg2Rad), 0)) * 1.5f;
         }
-        
     }
 }
