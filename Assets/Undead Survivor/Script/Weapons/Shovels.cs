@@ -19,26 +19,26 @@ public class Shovels : MonoBehaviour
     }
     private void Start()
     {
-        PlayerManager.Instance.OnWeaponLevelUp.AddListener(LevelUp);
-        myLevel = PlayerManager.Instance.GetLevel(myName);
+        PlayerManager.Instance.playerWeapons.OnWeaponLevelUp.AddListener(LevelUp);
+        myLevel = PlayerManager.Instance.playerWeapons.GetLevel(myName);
         Batch();
     }
     private void FixedUpdate()
     {
         transform.position = PlayerManager.Instance.player.transform.position;
-        Paint();
+        Attack();
     }
 
     private void LevelUp() // 레벨업 리스너 함수
     {
-        if (PlayerManager.Instance.GetLevel(myName) != myLevel) Batch();
+        if (PlayerManager.Instance.playerWeapons.GetLevel(myName) != myLevel) Batch();
     }
 
-    private void Paint()
+    private void Attack()
     {
         for (int i = 0; i < myLevel; i++)
         {
-            prefabAngleList[i] += 2f;
+            prefabAngleList[i] += 4f;
             prefabList[i].transform.localPosition = (new Vector3(-Mathf.Sin(prefabAngleList[i] * Mathf.Deg2Rad), Mathf.Cos(prefabAngleList[i] * Mathf.Deg2Rad), 0)) * 1.5f;
             prefabList[i].transform.rotation = Quaternion.Euler(0, 0, prefabAngleList[i]);
         }

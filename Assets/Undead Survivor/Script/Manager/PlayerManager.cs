@@ -10,31 +10,16 @@ using UnityEngine.Events;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
-    public Dictionary<string, int> weaponLevel = new ()
-        {
-            {"Shovels", 6},
-            {"Hoes", 0},
-            {"Rakes", 0},
-            {"Rifle", 0},
-            {"Pistol", 0},
-            {"Shotgun", 0},
-        };
-    public UnityEvent OnWeaponLevelUp = new ();
     public GameObject player;
-    public bool playerIsDead = false;  
+    public bool playerIsDead;
+    public Weapons playerWeapons;
     
     private void Awake()
     {
-        Instance = this;
+        playerIsDead = false;
         player = GameObject.Find("Player");
+        playerWeapons = GameObject.Find("Weapons").GetComponent<Weapons>();
+        Instance = this;
+        
     }
-
-    public void WeaponLevelUp(string weaponName)
-    {
-        if (weaponLevel[weaponName] == 8) return;
-        weaponLevel[weaponName] += 1;
-        OnWeaponLevelUp.Invoke();
-    }
-
-    public int GetLevel(string name) => weaponLevel[name]; 
 }
