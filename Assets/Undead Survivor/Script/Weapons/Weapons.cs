@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,17 +11,16 @@ using UnityEngine.Events;
  */
 public class Weapons : MonoBehaviour
 {
-    public Dictionary<string, int> weaponLevel = new()
+    private Dictionary<string, int> weaponLevel = new()
         {
             {"Shovels", 5},
-            {"Hoes", 0},
+            {"Hoes", 6},
             {"Rakes", 0},
             {"Rifle", 0},
             {"Pistol", 0},
             {"Shotgun", 0},
         };
     public UnityEvent OnWeaponLevelUp = new();
-    private string chosenGun;    private string chosenKnife;
 
 
     public void WeaponLevelUp(string weaponName)
@@ -31,4 +31,6 @@ public class Weapons : MonoBehaviour
     }
 
     public int GetLevel(string name) => weaponLevel[name];
+
+    public Vector3 GetNearestEnemyPos() => new Vector3(0, 0, 0); // ¹Ù²ã¾ß µÊ
 }

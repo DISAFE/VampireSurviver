@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5925281855242301308}
   - component: {fileID: 8560013246952520225}
   - component: {fileID: 9053299606547884993}
+  - component: {fileID: 5488867462384416150}
   m_Layer: 0
   m_Name: Hoe
   m_TagString: Bullet
@@ -130,3 +131,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5488867462384416150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4498223850067591233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adf42d187dee15498d15f5ad0db45cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

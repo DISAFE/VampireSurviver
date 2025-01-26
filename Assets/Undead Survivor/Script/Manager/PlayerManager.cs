@@ -10,15 +10,16 @@ using UnityEngine.Events;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
+    public Weapons weapons;
     public GameObject player;
     public bool playerIsDead;
-    public Weapons playerWeapons;
+    
     
     private void Awake()
     {
         playerIsDead = false;
         player = GameObject.Find("Player");
-        playerWeapons = GameObject.Find("Weapons").GetComponent<Weapons>();
+        weapons = GameObject.Find("Weapons").GetComponent<Weapons>();
         Instance = this;
         
     }

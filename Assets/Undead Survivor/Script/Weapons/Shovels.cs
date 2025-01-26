@@ -19,8 +19,8 @@ public class Shovels : MonoBehaviour
     }
     private void Start()
     {
-        PlayerManager.Instance.playerWeapons.OnWeaponLevelUp.AddListener(LevelUp);
-        myLevel = PlayerManager.Instance.playerWeapons.GetLevel(myName);
+        PlayerManager.Instance.weapons.OnWeaponLevelUp.AddListener(LevelUp);
+        myLevel = PlayerManager.Instance.weapons.GetLevel(myName);
         Batch();
     }
     private void FixedUpdate()
@@ -31,7 +31,7 @@ public class Shovels : MonoBehaviour
 
     private void LevelUp() // 레벨업 리스너 함수
     {
-        if (PlayerManager.Instance.playerWeapons.GetLevel(myName) != myLevel) Batch();
+        if (PlayerManager.Instance.weapons.GetLevel(myName) != myLevel) Batch();
     }
 
     private void Attack()
@@ -49,8 +49,7 @@ public class Shovels : MonoBehaviour
         prefabList = new GameObject[myLevel];
         prefabAngleList = new float[myLevel];
         for (int i = 0; i < myLevel; i++)
-        {
-            Debug.Log("batch");
+        { 
             prefabAngleList[i] = 360 * i / myLevel;
             prefabList[i] = Instantiate(myPrefab);
             prefabList[i].transform.SetParent(transform, false);
