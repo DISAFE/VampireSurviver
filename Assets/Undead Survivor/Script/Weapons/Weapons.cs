@@ -15,14 +15,20 @@ public class Weapons : MonoBehaviour
         {
             {"Shovels", 5},
             {"Hoes", 6},
-            {"Rakes", 0},
+            {"Rakes", 1},
             {"Rifle", 0},
             {"Pistol", 0},
             {"Shotgun", 0},
         };
     public UnityEvent OnWeaponLevelUp = new();
 
-
+   /* public void Start()
+    {
+        foreach(Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }*/
     public void WeaponLevelUp(string weaponName)
     {
         if (weaponLevel[weaponName] == 8) return;

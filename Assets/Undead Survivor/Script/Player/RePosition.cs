@@ -15,6 +15,9 @@ public class RePosition : MonoBehaviour
             case "Monster":
                 RePosisionMonster(collision);
                 break;
+            case "Bullet":
+                Destroy(collision.transform.gameObject);
+                break;
         }
     }
     

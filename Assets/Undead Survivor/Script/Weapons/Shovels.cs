@@ -26,6 +26,9 @@ public class Shovels : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position = PlayerManager.Instance.player.transform.position;
+    }
+    private void LateUpdate()
+    {
         Attack();
     }
 

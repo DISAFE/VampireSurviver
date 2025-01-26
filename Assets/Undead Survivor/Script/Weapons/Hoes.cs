@@ -27,7 +27,7 @@ public class Hoes : MonoBehaviour
         StartCoroutine(Attack());
     }
 
-    private void getState() // 유저가 무기 바꿀 때 상태를 가져오는 함수 
+    private void GetState() // 유저가 무기 바꿀 때 상태를 가져오는 함수 
     {
 
     }
