@@ -7,6 +7,7 @@ public class Rakes : MonoBehaviour
     [SerializeField]
     private GameObject myPrefab;
     private float cooltime;
+    private float delay;
     private string myName;
     private int myLevel;
     
@@ -15,26 +16,31 @@ public class Rakes : MonoBehaviour
     {
         myName = "Rakes";
         cooltime = 5;
+        delay = 0.5f;
     }
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Attack());
-
+        PlayerManager.Instance.weapons.OnWeaponLevelUp.AddListener(LevelUp);
         myLevel = PlayerManager.Instance.weapons.GetLevel(myName);
+        StartCoroutine(Attack());
+    }
+
+    private void LevelUp() // 레벨업 리스너 함수
+    {
+        if (PlayerManager.Instance.weapons.GetLevel(myName) != myLevel)
+            PlayerManager.Instance.weapons.GetLevel(myName);
     }
 
     private IEnumerator Attack()
     {
         while (true)
         {
-            yield return new WaitForSeconds(cooltime);
+            yield return new WaitForSecondsRealtime(cooltime);
             for(int i = 0; i < myLevel; i++)
             {
-                GameObject rake = Instantiate(myPrefab);
-                rake.transform.localScale = Vector3.one * 2;
-                rake.transform.localPosition += Vector3.up * 1.5f;
-                yield return new WaitForSeconds(0.5f);
+                GameObject rake = Instantiate(myPrefab);           
+                yield return new WaitForSecondsRealtime(delay);
             }
         }
     }

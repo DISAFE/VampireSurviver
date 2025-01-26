@@ -17,28 +17,28 @@ public class Hoes : MonoBehaviour
     private void Awake()
     {
         myName = "Hoes";
-        cooltime = 9;
+        cooltime = 5;
     }
 
     private void Start()
     {
+        PlayerManager.Instance.weapons.OnWeaponLevelUp.AddListener(LevelUp);
         myLevel = PlayerManager.Instance.weapons.GetLevel(myName);
-        myState = true;
         StartCoroutine(Attack());
     }
 
-    private void GetState() // 유저가 무기 바꿀 때 상태를 가져오는 함수 
+    private void LevelUp() // 레벨업 리스너 함수
     {
-
+        if (PlayerManager.Instance.weapons.GetLevel(myName) != myLevel) 
+            PlayerManager.Instance.weapons.GetLevel(myName);
     }
 
     private IEnumerator Attack()
     {
-        while (myState)
+        while (true)
         {
-            yield return new WaitForSecondsRealtime(cooltime - myLevel);
+            yield return new WaitForSecondsRealtime(cooltime - (myLevel / 2));
             GameObject hoe = Instantiate(myPrefab);
-            hoe.transform.localScale = new Vector3(myLevel, myLevel, 0);
             hoe.transform.position = transform.position;
         }
     }
